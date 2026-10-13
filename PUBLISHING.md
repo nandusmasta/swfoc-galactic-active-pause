@@ -42,6 +42,10 @@ The Workshop can't put the DLL in the game folder, so the description tells play
 
 ## ModDB
 
+Live page: <https://www.moddb.com/mods/space-bar-pause-orders-while-paused>. It is a mod profile, not an addon, because ModDB addon categories only cover content. For a new version, upload the zip from that page's **Files > Add file** (Category: Full Version), using "upload a file from a URL" with the GitHub release link.
+
+The steps below are how the profile was first created.
+
 1. Log in at <https://www.moddb.com>.
 2. Open the addon upload form at <https://www.moddb.com/addons/add>. Pick the game **Star Wars: Empire at War: Forces of Corruption** (<https://www.moddb.com/games/star-wars-empire-at-war-forces-of-corruption>).
 3. Fill in the form:
