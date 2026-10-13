@@ -10,7 +10,7 @@ Supported build: the Steam 64-bit release, `corruption\StarWarsG.exe` (PE timest
 
 ## Install
 
-1. Download `SpaceBarPause-vX.Y.Z.zip` from [Releases](https://github.com/nandusmasta/swfoc-spacebar-pause/releases) and extract it.
+1. Download `SpaceBarPause-vX.Y.Z.zip` from [Releases](https://github.com/nandusmasta/swfoc-spacebar-pause/releases) and extract it. You can also subscribe on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3819157144); the files then appear in `steamapps\workshop\content\32470\3819157144\`.
 2. Double-click **`Install.bat`**. It finds the game through your Steam libraries. If it can't, it asks for the `corruption` folder.
 3. Start Forces of Corruption normally.
 

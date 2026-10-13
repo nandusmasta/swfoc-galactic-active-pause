@@ -25,16 +25,16 @@ Steam has no in-game uploader for EaW, so the upload goes through Valve's **Stea
 
 1. One time only: download SteamCMD from Valve. The page is <https://developer.valvesoftware.com/wiki/SteamCMD>, and the file is `steamcmd.zip` from `steamcdn-a.akamaihd.net`. Extract it to, for example, `C:\steamcmd`.
 2. One time only: accept the Steam Workshop agreement at <https://steamcommunity.com/sharedfiles/workshoplegalagreement>. Steam refuses uploads until you do.
-3. Run the upload. Use your own Steam account name; SteamCMD asks for your password and Steam Guard code itself.
+3. Run the upload. It asks for your Steam account name; SteamCMD then asks for your password and Steam Guard code itself.
 
    ```bat
-   C:\steamcmd\steamcmd.exe +login YOUR_STEAM_ACCOUNT +workshop_build_item "J:/GameProjects/SWEAWSpaceBarPauseMod/dist/workshop/workshop_item.vdf" +quit
+   powershell -NoProfile -ExecutionPolicy Bypass -File .\tools\upload_workshop.ps1
    ```
 
-4. SteamCMD prints the new **PublishedFileId**.
-   - It also writes that ID into `workshop_item.vdf`.
-   - Note the ID down. `tools/package.py` regenerates the vdf with `"publishedfileid" "0"`, so put the real ID back into the vdf before uploading a future update. Otherwise you get a second item instead of an update.
-5. The item is uploaded as **private** (`"visibility" "2"`). Open it at `https://steamcommunity.com/sharedfiles/filedetails/?id=<ID>` and check the text and image.
+4. The item ID is stored in `package/workshop_item_id.txt` (currently `3819157144`), and `tools/package.py` writes it into the vdf.
+   - With the ID set, every later upload updates the same item and keeps its visibility.
+   - Delete the file only if you want to create a brand-new item.
+5. A brand-new item is uploaded as **private** (`"visibility" "2"`). Open it at `https://steamcommunity.com/sharedfiles/filedetails/?id=<ID>` and check the text and image.
    - Optionally add `package/art/banner_1280x720.png` as an extra screenshot ("Add/edit images & videos").
    - When it looks right, set visibility to **Public**.
 
