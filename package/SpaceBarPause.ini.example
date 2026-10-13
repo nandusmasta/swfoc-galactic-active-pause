@@ -1,0 +1,12 @@
+; Optional settings for Space Bar Pause.
+; To use: rename this file to SpaceBarPause.ini and put it in the game's "corruption" folder
+; (next to winmm.dll).
+
+[SpaceBarPause]
+; Key that toggles the galactic pause, as a Windows virtual-key code in decimal.
+; 32 = Space, 80 = P, 19 = Pause/Break, 192 = ` (backtick)
+Key=32
+
+; 1 = you can give fleet, production and orbit/surface orders while YOU have paused the game.
+; 0 = vanilla behaviour (orders are refused while paused).
+AllowOrdersWhilePaused=1
