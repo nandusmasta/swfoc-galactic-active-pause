@@ -53,14 +53,18 @@ def main():
     if "\\" in desc or '"' in desc:
         raise SystemExit("workshop_description.bbcode must not contain backslashes or double quotes")
     slash = lambda p: p.replace("\\", "/")
+    # The Workshop item ID (written after the first upload) makes later uploads update it.
+    id_file = os.path.join(PKG, "workshop_item_id.txt")
+    item_id = open(id_file).read().strip() if os.path.exists(id_file) else "0"
+    # New items start private for review; updates keep whatever visibility the item has.
+    visibility = '\t"visibility"\t"2"\n' if item_id == "0" else ""
     vdf = f'''"workshopitem"
 {{
 \t"appid"\t\t"{FOC_APPID}"
-\t"publishedfileid"\t"0"
+\t"publishedfileid"\t"{item_id}"
 \t"contentfolder"\t"{slash(content)}"
 \t"previewfile"\t"{slash(os.path.join(PKG, "art", "preview_512.png"))}"
-\t"visibility"\t"2"
-\t"title"\t\t"Space Bar Pause (+ orders while paused)"
+{visibility}\t"title"\t\t"Space Bar Pause (+ orders while paused)"
 \t"description"\t"{desc}"
 \t"changenote"\t"v{ver}"
 }}
