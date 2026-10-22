@@ -16,7 +16,7 @@ Supported build: the Steam 64-bit release, `corruption\StarWarsG.exe` (PE timest
 
 1. Get the mod in one of these ways:
    - Download `GalacticActivePause-vX.Y.Z.zip` from [Releases](https://github.com/nandusmasta/swfoc-galactic-active-pause/releases) and extract it.
-   - Download it from [ModDB](https://www.moddb.com/mods/space-bar-pause-orders-while-paused).
+   - Download it from [ModDB](https://www.moddb.com/mods/galactic-active-pause).
    - Subscribe on the [Steam Workshop](https://steamcommunity.com/sharedfiles/filedetails/?id=3819157144). The files then appear in `steamapps\workshop\content\32470\3819157144\`.
 2. Double-click **`Install.bat`**. It finds the game through your Steam libraries. If it can't, it asks for the `corruption` folder.
 3. Start Forces of Corruption normally.
