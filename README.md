@@ -8,7 +8,7 @@ Press **Pause** on the galactic map to pause, and press it again to resume. Whil
 - The "Game Paused" banner appears instantly instead of sliding in.
 - The on-screen Pause/Play button stays in sync.
 
-By **nanduskaiser**. Released under the MIT License. This mod was previously called *Space Bar Pause*.
+By **nanduskaiser**. Released under the MIT License. This mod was previously called *Space Bar Pause*. See the [changelog](CHANGELOG.md).
 
 Supported build: the Steam 64-bit release, `corruption\StarWarsG.exe` (PE timestamp `0x67002393`, 2024 patch). It works alongside data mods such as AotR and Thrawn's Revenge, including Workshop mods.
 

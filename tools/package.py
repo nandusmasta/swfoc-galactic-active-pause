@@ -31,6 +31,16 @@ def version():
     return re.search(r'#define MOD_VERSION "([^"]+)"', src).group(1)
 
 
+def changenote(ver):
+    """This version's CHANGELOG.md section as plain text, vdf-safe (no quotes or backslashes)."""
+    text = open(os.path.join(ROOT, "CHANGELOG.md"), encoding="utf-8").read()
+    m = re.search(r"^## v" + re.escape(ver) + r"\b.*?\n(.*?)(?=^## |\Z)", text, re.S | re.M)
+    if not m:
+        return f"v{ver}"
+    body = re.sub(r"[*`]", "", m.group(1)).replace('"', "'").replace("\\", "/").strip()
+    return f"v{ver}\n{body}"
+
+
 def main():
     ver = version()
     os.makedirs(DIST, exist_ok=True)
@@ -66,7 +76,7 @@ def main():
 \t"previewfile"\t"{slash(os.path.join(PKG, "art", "preview_512.png"))}"
 {visibility}\t"title"\t\t"Galactic Active Pause"
 \t"description"\t"{desc}"
-\t"changenote"\t"v{ver}"
+\t"changenote"\t"{changenote(ver)}"
 }}
 '''
     with open(os.path.join(DIST, "workshop", "workshop_item.vdf"), "w", encoding="utf-8") as f:
