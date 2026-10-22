@@ -63,6 +63,11 @@ if ($Uninstall) {
         $p = Join-Path $GameDir $f
         if (Test-Path -LiteralPath $p) { Remove-Item -LiteralPath $p }
     }
+    # Dialog layout the mod generated (adds the Pause/Play row to the keyboard options).
+    $rc = Join-Path $GameDir 'Data\Resources\GUIDialog\GUIDialogs.rc'
+    if ((Test-Path -LiteralPath $rc) -and (Select-String -LiteralPath $rc -SimpleMatch 'IDC_EDIT_GAME_OPTIONS' -Quiet)) {
+        Remove-Item -LiteralPath $rc
+    }
     Write-Host 'Space Bar Pause uninstalled. (SpaceBarPause.ini, if you created one, was kept.)'
     exit 0
 }
