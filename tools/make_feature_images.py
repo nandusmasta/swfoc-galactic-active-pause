@@ -95,8 +95,8 @@ def footer(d, text):
 
 
 def img_pause():
-    img, d = canvas(21, "Pause with one key", "Press SPACE on the galactic map. Press it again to resume.")
-    keycap(d, 120, 300, 480, 120, "SPACE", KEY)
+    img, d = canvas(21, "Pause with one key", "Press PAUSE on the galactic map, or bind any key you like.")
+    keycap(d, 120, 300, 480, 120, "PAUSE", KEY)
     d.line([(615, 360), (690, 360)], fill=GOLD, width=6)
     arrow_head(d, (705, 360), (1, 0), GOLD, 26)
     # mock command bar time controls
@@ -109,7 +109,7 @@ def img_pause():
     d.polygon([(x0 + 300, y0 + 95), (x0 + 330, y0 + 115), (x0 + 300, y0 + 135)], fill=(110, 120, 150))
     d.polygon([(x0 + 330, y0 + 95), (x0 + 360, y0 + 115), (x0 + 330, y0 + 135)], fill=(110, 120, 150))
     paused_badge(d, 790, 500)
-    footer(d, "The on-screen Pause/Play button stays in sync. Tactical battles keep SPACE as Camera Center.")
+    footer(d, "Rebind it in Options > Keyboard > Interface > Pause/Play. The Game Paused banner appears instantly.")
     return img
 
 
@@ -197,7 +197,7 @@ def img_install():
     img, d = canvas(71, "Easy install, easy removal", "No game files are changed. Works alongside Workshop mods like AotR.")
     steps = [("1", "Extract the zip", "or subscribe on the\nSteam Workshop"),
              ("2", "Run Install.bat", "finds your Steam\ngame folder for you"),
-             ("3", "Play", "press SPACE on the\ngalactic map")]
+             ("3", "Play", "press PAUSE on the\ngalactic map")]
     for i, (n, head, body) in enumerate(steps):
         x = 90 + i * 380
         d.rounded_rectangle([x, 240, x + 340, 540], radius=24, fill=PANEL + (235,), outline=(90, 110, 160), width=2)

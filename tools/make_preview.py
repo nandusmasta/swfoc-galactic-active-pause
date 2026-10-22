@@ -59,15 +59,15 @@ def pause_icon(d, cx, cy, r):
 def banner(w=1280, h=720):
     img = background(w, h)
     d = ImageDraw.Draw(img)
-    title = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 104)
+    title = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 86)
     sub = font(["segoeui.ttf", "arial.ttf"], 38)
     small = font(["segoeuisb.ttf", "segoeui.ttf", "arial.ttf"], 34)
     keyf = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 46)
-    d.text((80, 70), "SPACE BAR PAUSE", font=title, fill=(255, 255, 255))
+    d.text((80, 78), "GALACTIC ACTIVE PAUSE", font=title, fill=(255, 255, 255))
     d.text((84, 190), "Galactic conquest mod for Empire at War: Forces of Corruption", font=sub, fill=(185, 200, 230))
-    keycap(d, 80, 300, 520, 120, "SPACE", keyf)
+    keycap(d, 80, 300, 520, 120, "PAUSE", keyf)
     pause_icon(d, 720, 360, 62)
-    bullets = ["Pause / resume the galactic map with one key",
+    bullets = ["One-key pause, rebindable in Options",
                "Move fleets while paused",
                "Queue planet production while paused",
                "Shuttle troops between surface and orbit"]
@@ -81,13 +81,13 @@ def banner(w=1280, h=720):
 def square(s=512):
     img = background(s, s, seed=11)
     d = ImageDraw.Draw(img)
-    title = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 64)
+    title = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 54)
     sub = font(["segoeuisb.ttf", "segoeui.ttf", "arial.ttf"], 26)
     keyf = font(["bahnschrift.ttf", "segoeuib.ttf", "arialbd.ttf"], 40)
-    for i, line in enumerate(["SPACE BAR", "PAUSE"]):
+    for i, line in enumerate(["GALACTIC", "ACTIVE PAUSE"]):
         tw = d.textlength(line, font=title)
-        d.text(((s - tw) / 2, 40 + i * 70), line, font=title, fill=(255, 255, 255))
-    keycap(d, 56, 220, 400, 100, "SPACE", keyf)
+        d.text(((s - tw) / 2, 48 + i * 64), line, font=title, fill=(255, 255, 255))
+    keycap(d, 56, 220, 400, 100, "PAUSE", keyf)
     pause_icon(d, s / 2, 395, 40)
     line = "+ give orders while paused"
     tw = d.textlength(line, font=sub)

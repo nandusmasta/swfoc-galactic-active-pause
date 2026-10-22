@@ -1,5 +1,5 @@
 """Build release artifacts into dist/:
-  dist/SpaceBarPause-v<version>.zip      - GitHub / ModDB download
+  dist/GalacticActivePause-v<version>.zip      - GitHub / ModDB download
   dist/workshop/content/                 - Steam Workshop item content
   dist/workshop/workshop_item.vdf        - steamcmd +workshop_build_item script
 
@@ -35,10 +35,10 @@ def main():
     ver = version()
     os.makedirs(DIST, exist_ok=True)
 
-    zip_path = os.path.join(DIST, f"SpaceBarPause-v{ver}.zip")
+    zip_path = os.path.join(DIST, f"GalacticActivePause-v{ver}.zip")
     with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as z:
         for src, name in FILES:
-            z.write(src, f"SpaceBarPause/{name}")
+            z.write(src, f"GalacticActivePause/{name}")
     print("wrote", zip_path)
 
     content = os.path.join(DIST, "workshop", "content")
@@ -64,7 +64,7 @@ def main():
 \t"publishedfileid"\t"{item_id}"
 \t"contentfolder"\t"{slash(content)}"
 \t"previewfile"\t"{slash(os.path.join(PKG, "art", "preview_512.png"))}"
-{visibility}\t"title"\t\t"Space Bar Pause (+ orders while paused)"
+{visibility}\t"title"\t\t"Galactic Active Pause"
 \t"description"\t"{desc}"
 \t"changenote"\t"v{ver}"
 }}

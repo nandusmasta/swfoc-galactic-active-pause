@@ -1,4 +1,4 @@
-# Space Bar Pause - installer / uninstaller for Star Wars: Empire at War - Forces of Corruption (Steam).
+# Galactic Active Pause - installer / uninstaller for Star Wars: Empire at War - Forces of Corruption (Steam).
 # Copies winmm.dll next to corruption\StarWarsG.exe, or removes it with -Uninstall.
 param(
     [switch]$Uninstall,
@@ -53,7 +53,7 @@ $target = Join-Path $GameDir 'winmm.dll'
 Write-Host "Game folder: $GameDir"
 
 if ($Uninstall) {
-    if (-not (Test-Path -LiteralPath $target)) { Write-Host 'Space Bar Pause is not installed.'; exit 0 }
+    if (-not (Test-Path -LiteralPath $target)) { Write-Host 'Galactic Active Pause is not installed.'; exit 0 }
     if (-not (Test-OurDll $target)) {
         Write-Host 'The winmm.dll in the game folder belongs to another mod; leaving it alone.'
         exit 1
@@ -68,7 +68,7 @@ if ($Uninstall) {
     if ((Test-Path -LiteralPath $rc) -and (Select-String -LiteralPath $rc -SimpleMatch 'IDC_EDIT_GAME_OPTIONS' -Quiet)) {
         Remove-Item -LiteralPath $rc
     }
-    Write-Host 'Space Bar Pause uninstalled. (SpaceBarPause.ini, if you created one, was kept.)'
+    Write-Host 'Galactic Active Pause uninstalled. (SpaceBarPause.ini, if you created one, was kept.)'
     exit 0
 }
 
@@ -80,4 +80,4 @@ if ((Test-Path -LiteralPath $target) -and -not (Test-OurDll $target)) {
 }
 
 Copy-Item -LiteralPath (Join-Path $Here 'winmm.dll') -Destination $target -Force
-Write-Host 'Space Bar Pause installed. Start Forces of Corruption and press Space on the galactic map.'
+Write-Host 'Galactic Active Pause installed. Start Forces of Corruption and press Pause on the galactic map.'

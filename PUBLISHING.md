@@ -8,7 +8,7 @@ python tools/package.py
 ```
 
 This produces:
-- `dist/SpaceBarPause-v<version>.zip`
+- `dist/GalacticActivePause-v<version>.zip`
 - `dist/workshop/content/`
 - `dist/workshop/workshop_item.vdf`
 
@@ -16,7 +16,7 @@ This produces:
 
 ```sh
 git tag v<version> && git push --tags
-gh release create v<version> dist/SpaceBarPause-v<version>.zip --title "Space Bar Pause v<version>" --notes "..."
+gh release create v<version> dist/GalacticActivePause-v<version>.zip --title "Galactic Active Pause v<version>" --notes "..."
 ```
 
 ## Steam Workshop (Forces of Corruption, app 32470)
@@ -49,10 +49,10 @@ The steps below are how the profile was first created.
 1. Log in at <https://www.moddb.com>.
 2. Open the addon upload form at <https://www.moddb.com/addons/add>. Pick the game **Star Wars: Empire at War: Forces of Corruption** (<https://www.moddb.com/games/star-wars-empire-at-war-forces-of-corruption>).
 3. Fill in the form:
-   - **Name:** `Space Bar Pause`
+   - **Name:** `Galactic Active Pause`
    - **Category:** `Other` (or `Patches`, if the form offers it)
    - **Licence:** `MIT`
-   - **File:** `dist/SpaceBarPause-v<version>.zip`
+   - **File:** `dist/GalacticActivePause-v<version>.zip`
    - **Image/preview:** `package/art/banner_1280x720.png`
    - **Summary:** use the summary below
    - **Description:** use the description below
@@ -60,33 +60,34 @@ The steps below are how the profile was first created.
 
 ### ModDB summary (max ~200 chars)
 
-> Press SPACE to pause/resume the galactic map, and keep giving orders while paused: move fleets, queue production, shuttle troops between surface and orbit.
+> One-key active pause for the galactic map (Pause by default, rebindable in Options). Keep giving orders while paused: move fleets, queue production, move troops.
 
 ### ModDB description
 
 ```
-Space Bar Pause adds a proper "active pause" to galactic conquest in Forces of Corruption.
+Galactic Active Pause adds a proper "active pause" to galactic conquest in Forces of Corruption. (Formerly Space Bar Pause.)
 
 FEATURES
-- Press SPACE on the galactic map to pause, and press it again to resume. The on-screen Pause/Play button stays in sync.
+- Press PAUSE on the galactic map to pause, and press it again to resume. The on-screen Pause/Play button stays in sync.
+- Rebindable in the game: Options > Keyboard > Interface > Pause/Play. The default is Pause, because Space is the game's Battle Cam key.
 - Orders while paused: move fleets, queue production on planets, and move troops between the surface and orbit while you have the game paused. Nothing moves or builds until you unpause.
 - Orders are still refused while a battle is pending or a story script is holding the pause.
-- Tactical battles are not affected. In battles, Space keeps its normal Camera Center function.
-- Works alongside data mods such as Awakening of the Rebellion and Thrawn's Revenge, including Workshop mods, because it changes no game files.
+- The "Game Paused" banner appears instantly instead of sliding in.
+- Tactical battles are not affected.
+- Works alongside data mods such as Awakening of the Rebellion and Thrawn's Revenge, including Workshop mods.
 
 INSTALL
 Extract the zip and double-click Install.bat. It finds your Steam game folder automatically.
-Manual install: copy winmm.dll into ...\steamapps\common\Star Wars Empire at War\corruption\
-Uninstall: run Uninstall.bat, or delete that winmm.dll.
+Manual install: copy winmm.dll into ...\steamapps\common\Star Wars Empire at War\corruptionUninstall: run Uninstall.bat.
 
 REQUIREMENTS
 Steam 64-bit Forces of Corruption, current 2024 patch. If a future game update changes the executable, the mod turns itself off safely and the game runs normally.
 
 SETTINGS
-Rename SpaceBarPause.ini.example to SpaceBarPause.ini (in the corruption folder) to change the key or turn off orders while paused.
+Rename SpaceBarPause.ini.example to SpaceBarPause.ini (in the corruption folder) to turn off orders while paused.
 
 OPEN SOURCE
-MIT licensed. Full source and technical notes: https://github.com/nandusmasta/swfoc-spacebar-pause
+MIT licensed. Full source and technical notes: https://github.com/nandusmasta/swfoc-galactic-active-pause
 It is a small DLL that changes the game's code in memory, so some antivirus programs may flag it. You can read and build the full source yourself.
 
 By nanduskaiser.

@@ -1,12 +1,14 @@
-[h1]Space Bar Pause[/h1]
-Press [b]SPACE[/b] on the galactic map to pause, and press it again to resume. While you have the game paused, you can still give orders.
+[h1]Galactic Active Pause[/h1]
+Press [b]PAUSE[/b] on the galactic map to pause, and press it again to resume. While you have the game paused, you can still give orders.
 
 [h2]Features[/h2]
 [list]
 [*]Pause and resume galactic time with a single key. The on-screen Pause/Play button stays in sync.
+[*][b]Rebindable in the game:[/b] Options > Keyboard > Interface > Pause/Play. The default is the Pause key, because Space is the game's Battle Cam key.
 [*][b]Orders while paused:[/b] move fleets, queue production on planets, and move troops between the surface and orbit. Nothing moves or builds until you unpause.
-[*]Tactical battles are not affected. In battles, Space keeps its normal 'Camera Center' function.
-[*]Works with data mods such as AotR and Thrawn's Revenge, including Workshop mods, because it changes no game data files.
+[*]The 'Game Paused' banner appears instantly instead of sliding in.
+[*]Tactical battles are not affected.
+[*]Works with data mods such as AotR and Thrawn's Revenge, including Workshop mods.
 [/list]
 
 [h2]IMPORTANT: one-time install step[/h2]
@@ -17,20 +19,21 @@ This is a small code mod (a DLL). Steam cannot put it in the game folder for you
 [*]Double-click [b]Install.bat[/b]. It finds the game automatically.
 [*]Start Forces of Corruption normally. You don't need to launch this item as a mod.
 [/olist]
-To uninstall, run [b]Uninstall.bat[/b] from the same folder.
+To uninstall, run [b]Uninstall.bat[/b] from the same folder. Updating from an older version: run Install.bat again after Steam downloads the update.
 
 [h2]Compatibility[/h2]
 [list]
 [*]Requires the current Steam 64-bit release of Forces of Corruption (2024 patch).
 [*]If a future game update changes the executable, the mod turns itself off safely. The game then runs normally until the mod is updated.
+[*]If another mod ships its own keyboard-options layout, the Pause/Play row is missing from that options screen, but the key still works.
 [*]Single player only. The game does not allow galactic pausing in multiplayer.
 [/list]
 
 [h2]Settings[/h2]
-To change the key, or to turn off orders while paused, rename [i]SpaceBarPause.ini.example[/i] to [i]SpaceBarPause.ini[/i] and put it in the game's [i]corruption[/i] folder.
+To turn off orders while paused, rename [i]SpaceBarPause.ini.example[/i] to [i]SpaceBarPause.ini[/i] and put it in the game's [i]corruption[/i] folder.
 
 [h2]Source code & manual download[/h2]
-Open source (MIT): [url=https://github.com/nandusmasta/swfoc-spacebar-pause]github.com/nandusmasta/swfoc-spacebar-pause[/url]
+Open source (MIT): [url=https://github.com/nandusmasta/swfoc-galactic-active-pause]github.com/nandusmasta/swfoc-galactic-active-pause[/url]
 Some antivirus programs flag DLL mods that change the game's code in memory. You can read and build the full source yourself.
 
-Mod by nanduskaiser.
+Formerly called Space Bar Pause. Mod by nanduskaiser.

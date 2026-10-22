@@ -1,5 +1,5 @@
 /*
- * Space Bar Pause for Star Wars: Empire at War - Forces of Corruption (Steam 64-bit).
+ * Galactic Active Pause for Star Wars: Empire at War - Forces of Corruption (Steam 64-bit).
  *
  * Built as a proxy winmm.dll that StarWarsG.exe loads from its own folder. It adds a
  * rebindable "Pause/Play" key (key slot 153, default Pause) that toggles the galactic
@@ -637,18 +637,18 @@ static void setup(HMODULE self)
 
     g_base = (uint8_t *)GetModuleHandleA(NULL);
     if (!is_supported_build() || !sites_match()) {
-        log_line("Unsupported StarWarsG.exe build; Space Bar Pause disabled, game left unmodified.");
+        log_line("Unsupported StarWarsG.exe build; Galactic Active Pause disabled, game left unmodified.");
         return;
     }
     g_near = alloc_near_image(0x3000);
     if (!g_near) {
-        log_line("No memory near the game image; Space Bar Pause disabled.");
+        log_line("No memory near the game image; Galactic Active Pause disabled.");
         return;
     }
 
     write_dialog_layout(dir);
     install_pause_key();
-    log_line("Space Bar Pause v" MOD_VERSION " active: Pause/Play key in Options > Keyboard > Interface.");
+    log_line("Galactic Active Pause v" MOD_VERSION " active: Pause/Play key in Options > Keyboard > Interface.");
     if (allow_orders) {
         install_order_patches();
         log_line("Orders while paused enabled (%u checks relaxed).",
