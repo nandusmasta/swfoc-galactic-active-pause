@@ -3,8 +3,8 @@
  *
  * Built as a proxy winmm.dll that StarWarsG.exe loads from its own folder. It adds a
  * rebindable "Pause/Play" key (key slot 153, default Pause) that toggles the galactic
- * pause exactly like the Pause/Play button, removes the pause banner animation on the
- * galactic map, and lets the player give orders while they have the game paused.
+ * pause exactly like the Pause/Play button, makes the "Game Paused" banner appear without
+ * its slide-in on the galactic map, and lets the player give orders while paused.
  *
  * All addresses are RVAs into StarWarsG.exe build 0x67002393. Anything else is left
  * alone, and every byte we overwrite is checked first.
@@ -48,7 +48,8 @@ BOOL proxy_init(void);
 #define COMPONENT_STRIDE        0x48
 #define COMPONENT_B_PLAY_PAUSE  0x26a
 #define COMPONENT_PAUSE_SHELL   0x2ab    /* animated "Game Paused" banner */
-#define VT_SET_HIDDEN           (0x78 / 8)
+#define SHELL_OFS_MODEL         0xc8     /* model instance the banner animates */
+#define MODEL_OFS_LAST_UPDATE   0x148    /* float: game time of the last animation update */
 #define VT_BUTTON_SET_STATE     (0x1d0 / 8)   /* 3 = toggled on, 1 = normal */
 
 /* Key bindings: { int key; int modifier; }[count] at +8, count at +0x10. 153 slots in the
@@ -256,14 +257,16 @@ static char hotkey_dispatch_hook(int vk)
     return g_original_dispatch(vk);
 }
 
-/* Pause() starts the "Game Paused" banner's slide-in animation; on the galactic map we
- * hide the banner straight away so pausing is instant. Play() already hides it. */
+/* Pause() starts the "Game Paused" banner's slide-in (a play-once model animation). Each
+ * frame the model advances by (now - last update time); backdating that time makes the
+ * next frame clamp to the last frame, so on the galactic map the banner appears in place. */
 static void pause_hook(void *command_bar)
 {
     g_original_pause(command_bar);
-    void *shell = component(COMPONENT_PAUSE_SHELL);
-    if (shell && in_galactic_mode())
-        ((SetIntFn)vfunc(shell, VT_SET_HIDDEN))(shell, 1);
+    uint8_t *shell = component(COMPONENT_PAUSE_SHELL);
+    uint8_t *model = shell ? *(uint8_t **)(shell + SHELL_OFS_MODEL) : NULL;
+    if (model && in_galactic_mode())
+        *(float *)(model + MODEL_OFS_LAST_UPDATE) -= 1000.0f;
 }
 
 static void defaults_hook(void *keys)

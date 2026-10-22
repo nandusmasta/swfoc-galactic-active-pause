@@ -4,7 +4,7 @@ by nanduskaiser - MIT License - https://github.com/nandusmasta/swfoc-spacebar-pa
 
 WHAT IT DOES
   * Press the PAUSE key on the galactic map to pause. Press it again to resume.
-    Pausing is instant: the slow "Game Paused" banner animation is skipped.
+    The "Game Paused" banner appears immediately instead of sliding in.
   * The key can be changed in the game: Options > Keyboard > Interface > Pause/Play.
     (Space is the game's default Battle Cam key, so Pause is used by default.)
   * While you have paused the game, you can still give orders: move fleets, queue
