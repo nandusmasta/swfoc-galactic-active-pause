@@ -1,4 +1,4 @@
-GALACTIC ACTIVE PAUSE  v1.1.0
+GALACTIC ACTIVE PAUSE  v1.1.1
 for Star Wars: Empire at War - Forces of Corruption (Steam version)
 by nanduskaiser - MIT License - https://github.com/nandusmasta/swfoc-galactic-active-pause
 
@@ -30,7 +30,7 @@ UNINSTALL
 
 CHECKING IT WORKS
   After you start the game, corruption\SpaceBarPause.log should say:
-    "Galactic Active Pause v1.1.0 active: Pause/Play key in Options > Keyboard > Interface."
+    "Galactic Active Pause v1.1.1 active: Pause/Play key in Options > Keyboard > Interface."
 
 SETTINGS (optional)
   Rename SpaceBarPause.ini.example to SpaceBarPause.ini and put it in the corruption

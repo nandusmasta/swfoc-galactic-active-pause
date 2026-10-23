@@ -65,6 +65,8 @@ int main(int argc, char **argv)
     CHECK(memcmp(g_original_pause, D_PAUSE.bytes, 13) == 0 && *(void **)((uint8_t *)g_original_pause + 19) ==
           g_base + RVA_COMMAND_BAR_PAUSE + 13, "Pause() trampoline returns after stolen bytes");
     CHECK(g_base[0x3c4495] == 0xE8 && g_base[0x3c4495 + 5] == 0x90, "order check site patched");
+    CHECK(memcmp(g_base + 0x4b2366, "\x83\x3D\x9F\x30\x66\x00\x00", 7) == 0,
+          "Is_Locked untouched (galactic time step must stay frozen while paused)");
 
     CHECK(!stub_locked(1, 0) && stub_locked(2, 0) && stub_locked(1, 1) && !stub_locked(0, 1), "order stub semantics");
 

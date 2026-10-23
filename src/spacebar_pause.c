@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MOD_VERSION "1.1.0"
+#define MOD_VERSION "1.1.1"
 
 BOOL proxy_init(void);
 
@@ -112,7 +112,9 @@ static const struct imm_patch g_slot_count_patches[] = {
  * For "orders while paused" they are redirected to a stub that compares the count minus
  * the player's own Pause-button pause, so orders go through during a manual pause but
  * not while a battle is pending or a script holds the pause. The galactic object update
- * (which actually freezes time) still reads the real count.
+ * (which actually freezes time) still reads the real count, and so must
+ * GalacticModeClass::Is_Locked (RVA 0x4b2366): the galactic time step zeroes its delta
+ * while it is true, so relaxing it would keep the clock and production running.
  */
 struct order_check_site {
     uint32_t rva;
@@ -125,7 +127,6 @@ static const struct order_check_site g_order_sites[] = {
     { 0x3c4495, "MoveThroughObjectsEvent::Execute (fleet move)", 6, { 0x39, 0x05, 0x71, 0x0F, 0x75, 0x00 } },
     { 0x5af297, "FleetManagementEvent::Execute (orbit/surface)", 6, { 0x39, 0x05, 0x6F, 0x61, 0x56, 0x00 } },
     { 0x3acc12, "SelectEvent::Execute",                          6, { 0x39, 0x05, 0xF4, 0x87, 0x76, 0x00 } },
-    { 0x4b2366, "GalacticModeClass::Is_Locked",                  7, { 0x83, 0x3D, 0x9F, 0x30, 0x66, 0x00, 0x00 } },
     { 0x03beaf, "galactic selection order input",                7, { 0x83, 0x3D, 0x56, 0x95, 0xAD, 0x00, 0x00 } },
 };
 

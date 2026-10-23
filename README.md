@@ -71,7 +71,8 @@ When the DLL loads into `StarWarsG.exe`, it first checks the exe's exact build (
 | `0xb155c4` | Input-blocked byte checked by the dispatcher |
 | `0xb15418` | Current `GameMode*`. vfunc `+0xE0` gives the mode type: 0 galactic, 1/2 tactical. |
 | `0xb1540c` | Galactic pause count (`GameModeManager+0x2c`). Pause/Play add or remove one; pending battles and scripts add their own. The galactic object update (`0x1402be640`) freezes time while it is > 0. Galactic pause also clears `TheAIClass` "AI enabled" byte 0 through `0x1404d9fa0`. |
-| `0x3c4495`, `0x5af297`, `0x3acc12`, `0x4b2366`, `0x3beaf` | `cmp [pause count],0` order checks in MoveThroughObjectsEvent, FleetManagementEvent, SelectEvent, `GalacticModeClass::Is_Locked` (vtable `+0x48`) and the galactic order input. For orders while paused, the mod redirects these to a stub that subtracts the manual pause. |
+| `0x3c4495`, `0x5af297`, `0x3acc12`, `0x3beaf` | `cmp [pause count],0` order checks in MoveThroughObjectsEvent, FleetManagementEvent, SelectEvent and the galactic order input. For orders while paused, the mod redirects these to a stub that subtracts the manual pause. |
+| `0x4b2366` | `GalacticModeClass::Is_Locked` (vtable `+0x48`): paused or battle pending. The galactic time step (vtable `+0xb8`, `0x1404b2c00`) passes a zero delta while it is true, which is what stops the clock and production. The mod must not relax it; v1.1.0 did, which is why the clock kept running. |
 | `0xb27f60` | `CommandBar` singleton. `+0x2968` is the speed state (0 paused, 1 normal, 2 fast). `+0x211c` is the layout (1 galactic). |
 | `0x31f870` / `0x31fcd0` | `CommandBar::Pause()` / `CommandBar::Play()`, the `b_play_pause` handlers |
 | `0xa174e0` | Command-bar component table (0x48-byte entries: name, component*, handlers at `+0x18`/`+0x38`). `b_play_pause` is id `0x26a`. |

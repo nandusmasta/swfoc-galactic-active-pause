@@ -10,7 +10,15 @@ $Marker = 'SpaceBarPause'
 $Here = Split-Path -Parent $MyInvocation.MyCommand.Path
 
 function Test-GameDir([string]$dir) {
-    $dir -and (Test-Path -LiteralPath (Join-Path $dir 'StarWarsG.exe'))
+    if (-not $dir) { return $false }
+    try {
+        # Skip missing or empty drives (unplugged disks, card readers) instead of failing.
+        $root = [IO.Path]::GetPathRoot([IO.Path]::GetFullPath($dir))
+        if ($root -match '^[A-Za-z]:\\$' -and -not ([IO.DriveInfo]::new($root)).IsReady) { return $false }
+        return [IO.File]::Exists([IO.Path]::Combine($dir, 'StarWarsG.exe'))
+    } catch {
+        return $false
+    }
 }
 
 function Test-OurDll([string]$path) {
@@ -32,7 +40,8 @@ function Find-GameDir {
                 ForEach-Object { $_.Matches } | ForEach-Object { $_.Groups[1].Value -replace '\\\\', '\' }
         }
         foreach ($lib in $libraries) {
-            $candidates += Join-Path $lib 'steamapps\common\Star Wars Empire at War\corruption'
+            # Plain string join: Join-Path fails on drives that no longer exist (old libraries).
+            $candidates += [IO.Path]::Combine($lib, 'steamapps\common\Star Wars Empire at War\corruption')
         }
     }
     foreach ($c in $candidates) {
